@@ -1,0 +1,71 @@
+# WARNING, INSECURE, only to be used for experimenting
+version: '3.6'
+services:
+  
+  elasticsearch_exporter:
+    image: quay.io/prometheuscommunity/elasticsearch-exporter:latest
+    restart: unless-stopped
+    container_name: elasticsearch-exporter
+    # command:
+    # - '--es.uri=localhost:9200'
+    restart: unless-stopped
+    ports:
+    - 0.0.0.0:9114:9114
+  
+  # write test files to a local volume
+  prometheus:
+    image: prom/prometheus
+    restart: unless-stopped
+    container_name: prometheus-container
+    volumes:
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+    # command: [/bin/sh, -c , "chmod +x /app/app.sh && ./app/app.sh"]
+    
+  graphana:
+    image: grafana/grafana
+    restart: unless-stopped
+    container_name: graphana-container
+    ports:
+      - 3000:3000
+      
+  locust_exporter:
+    image: containersol/locust_exporter
+    restart: unless-stopped
+    container_name: locust-exporter
+    # ports:
+    # - "9646:9646"
+    network_mode: "host"
+    
+  nginx_exporter:
+    image: nginx
+    restart: unless-stopped
+    container_name: nginx-exporter
+    ports:
+    - "8989:80"
+    # network_mode: "host"
+
+  master:
+      image: locustio/locust:2.10.1
+      restart: unless-stopped
+      ports:
+       - "8089:8089"
+      volumes:
+        - ./:/mnt/locust
+      command: -f /mnt/locust/package/locustfile.py --master -H http://master:8089
+  
+  worker:
+    image: locustio/locust:2.10.1
+    restart: unless-stopped
+    volumes:
+      - ./:/mnt/locust
+    command: -f /mnt/locust/package/locustfile.py --worker --master-host master
+
+  lambda_exporter:
+    image: prom/cloudwatch-exporter
+    container_name: lambda-exporter
+    ports:
+      - "9106:9106"
+    volumes:
+      - ./config.yml:/config/config.yml
