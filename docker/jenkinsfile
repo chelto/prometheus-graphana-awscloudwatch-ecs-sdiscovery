@@ -11,6 +11,7 @@ pipeline {
         BUILD_PATH = "./docker/prometheus-exporter"
         CLUSTER_NAME = "podcast-context-cluster"
         SERVICE_NAME = "podcast-context-prometheus-exporter-service"
+        as = ""
       }
   
   stages {
