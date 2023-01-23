@@ -3,105 +3,132 @@ metrics:
 - aws_dimensions:
   - FunctionName
   - Resource
+  aws_dimension_select:
+     FunctionName: ["*"]
+     aws_statistics: [Sum]
+  # aws_dimension_select_regex:
   aws_metric_name: Invocations
   aws_namespace: AWS/Lambda
   aws_statistics:
   - Sum
-- aws_dimensions:
-  - FunctionName
-  - Resource
-  aws_metric_name: Errors
-  aws_namespace: AWS/Lambda
-  aws_statistics:
-  - Sum
-- aws_dimensions:
-  - FunctionName
-  - Resource
-  aws_metric_name: Duration
-  aws_namespace: AWS/Lambda
-  aws_statistics:
-  - Average
-- aws_dimensions:
-  - FunctionName
-  - Resource
-  aws_metric_name: Duration
-  aws_namespace: AWS/Lambda
-  aws_statistics:
-  - Maximum
-- aws_dimensions:
-  - FunctionName
-  - Resource
-  aws_metric_name: Duration
-  aws_namespace: AWS/Lambda
-  aws_statistics:
-  - Minimum
-- aws_dimensions:
-  - FunctionName
-  - Resource
-  aws_metric_name: Throttles
-  aws_namespace: AWS/Lambda
-  aws_statistics:
-  - Sum
-- aws_dimensions:
-  - FunctionName
-  - Resource
-  aws_metric_name: ConcurrentExecutions
-  aws_namespace: AWS/Lambda
-  aws_statistics:
-  - Sum
-- aws_dimensions:
-  - FunctionName
-  - Resource
-  aws_metric_name: UnreservedConcurrentExecutions
-  aws_namespace: AWS/Lambda
-  aws_statistics:
-  - Sum
-- aws_dimensions:
-  - TableName
-  - GlobalSecondaryIndexName
-  aws_metric_name: ConsumedReadCapacityUnits
-  aws_namespace: AWS/DynamoDB
-  aws_statistics:
-  - Maximum
-- aws_dimensions:
-  - TableName
-  - GlobalSecondaryIndexName
-  aws_metric_name: ConsumedWriteCapacityUnits
-  aws_namespace: AWS/DynamoDB
-  aws_statistics:
-  - Maximum
-- aws_dimensions:
-  - TableName
-  - Operation
-  aws_metric_name: ThrottledRequests
-  aws_namespace: AWS/DynamoDB
-  aws_statistics:
-  - Sum
-- aws_dimensions:
-  - TableName
-  - Operation
-  aws_metric_name: SystemErrors
-  aws_namespace: AWS/DynamoDB
-  aws_statistics:
-  - Sum
-- aws_dimensions:
-  - TableName
-  - Operation
-  aws_metric_name: SuccessfulRequestLatency
-  aws_namespace: AWS/DynamoDB
-  aws_statistics:
-  - Maximum
-- aws_dimensions:
-  - TableName
-  - GlobalSecondaryIndexName
-  aws_metric_name: WriteThrottleEvents
-  aws_namespace: AWS/DynamoDB
-  aws_statistics:
-  - Sum
-- aws_dimensions:
-  - TableName
-  - GlobalSecondaryIndexName
-  aws_metric_name: ReadThrottleEvents
-  aws_namespace: AWS/DynamoDB
-  aws_statistics:
-  - Sum
+  # aws_tag_select:
+  #    tag_selections:
+  #      Project: ${PROJECT_NAME}
+  #      Environment: ${ENVIRONMENT_NAME}
+  #      Product: ${PRODUCT_NAME}
+  #    resource_type_selection: "function"
+  #    resource_id_dimension: LoadBalancerName:${ENVIRONMENT_NAME}
+
+# - aws_dimensions:
+#   - FunctionName
+#   - Resource
+#   aws_metric_name: Errors
+#   aws_namespace: AWS/Lambda
+#   aws_statistics:
+#   - Sum
+
+# - aws_dimensions:
+#   - FunctionName
+#   - Resource
+#   aws_metric_name: Duration
+#   aws_namespace: AWS/Lambda
+#   aws_statistics:
+#   - Average
+
+  
+# - aws_dimensions:
+#   - FunctionName
+#   - Resource
+#   aws_metric_name: Duration
+#   aws_namespace: AWS/Lambda
+#   aws_statistics:
+#   - Maximum
+
+# - aws_dimensions:
+#   - FunctionName
+#   - Resource
+#   aws_metric_name: Duration
+#   aws_namespace: AWS/Lambda
+#   aws_statistics:
+#   - Minimum
+
+# - aws_dimensions:
+#   - FunctionName
+#   - Resource
+#   aws_metric_name: Throttles
+#   aws_namespace: AWS/Lambda
+#   aws_statistics:
+#   - Sum
+
+# - aws_dimensions:
+#   - FunctionName
+#   - Resource
+#   aws_metric_name: ConcurrentExecutions
+#   aws_namespace: AWS/Lambda
+#   aws_statistics:
+#   - Sum
+
+# - aws_dimensions:
+#   - FunctionName
+#   - Resource
+#   aws_metric_name: UnreservedConcurrentExecutions
+#   aws_namespace: AWS/Lambda
+#   aws_statistics:
+#   - Sum
+
+# - aws_dimensions:
+#   - TableName
+#   - GlobalSecondaryIndexName
+#   aws_metric_name: ConsumedReadCapacityUnits
+#   aws_namespace: AWS/DynamoDB
+#   aws_statistics:
+#   - Maximum
+
+# - aws_dimensions:
+#   - TableName
+#   - GlobalSecondaryIndexName
+#   aws_metric_name: ConsumedWriteCapacityUnits
+#   aws_namespace: AWS/DynamoDB
+#   aws_statistics:
+#   - Maximum
+
+# - aws_dimensions:
+#   - TableName
+#   - Operation
+#   aws_metric_name: ThrottledRequests
+#   aws_namespace: AWS/DynamoDB
+#   aws_statistics:
+#   - Sum
+
+# - aws_dimensions:
+#   - TableName
+#   - Operation
+#   aws_metric_name: SystemErrors
+#   aws_namespace: AWS/DynamoDB
+#   aws_statistics:
+#   - Sum
+
+# - aws_dimensions:
+#   - TableName
+#   - Operation
+#   aws_metric_name: SuccessfulRequestLatency
+#   aws_namespace: AWS/DynamoDB
+#   aws_statistics:
+#   - Maximum
+
+# - aws_dimensions:
+#   - TableName
+#   - GlobalSecondaryIndexName
+#   aws_metric_name: WriteThrottleEvents
+#   aws_namespace: AWS/DynamoDB
+#   aws_statistics:
+#   - Sum
+
+# - aws_dimensions:
+#   - TableName
+#   - GlobalSecondaryIndexName
+#   aws_metric_name: ReadThrottleEvents
+#   aws_namespace: AWS/DynamoDB
+#   aws_statistics:
+#   - Sum
+
