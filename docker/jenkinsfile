@@ -3,19 +3,20 @@ pipeline {
     node {
       label 'spot-agents'
     }
+  }
   environment {
         REGION = "eu-west-2"
         ECR_REPO = '997475656115.dkr.ecr.eu-west-2.amazonaws.com/podcastcontextual-prometheus-exporter-dev'
         DOCKER_BUILD_TAG = "podcastcontextual-prometheus-exporter-dev"
         BUILD_PATH = "./prometheus-exporter"
       }
-  }
+  
   stages {
     stage('Build container') {
       steps {
         sh 'cd ${BUILD_PATH} && docker build -t ${DOCKER_BUILD_TAG} .'}
       }
-    }
+    
     stage('Push container'){
         steps {
           sh 'aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin 997475656115.dkr.ecr.eu-west-2.amazonaws.com'
@@ -23,6 +24,7 @@ pipeline {
           sh 'docker push ${ECR_REPO}:latest'
         }
       }
-    }
+  }
+  }
 
 
