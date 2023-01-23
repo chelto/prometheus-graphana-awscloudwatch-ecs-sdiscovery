@@ -9,6 +9,8 @@ pipeline {
         ECR_REPO = '997475656115.dkr.ecr.eu-west-2.amazonaws.com/podcastcontextual-prometheus-exporter-dev'
         DOCKER_BUILD_TAG = "podcastcontextual-prometheus-exporter-dev"
         BUILD_PATH = "./docker/prometheus-exporter"
+        CLUSTER_NAME = "podcast-context-cluster"
+        SERVICE_NAME = "podcast-context-prometheus-exporter-service"
       }
   
   stages {
@@ -22,6 +24,12 @@ pipeline {
           sh 'aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin 997475656115.dkr.ecr.eu-west-2.amazonaws.com'
           sh 'docker tag ${DOCKER_BUILD_TAG}:latest ${ECR_REPO}:latest'
           sh 'docker push ${ECR_REPO}:latest'
+        }
+      }
+    stage('Update live service'){
+        steps {
+          sh 'aws ecs update-service --region ${REGION} --cluster "${BRANCH_NAME}-${CLUSTER_NAME}" --service "${BRANCH_NAME}-${SERVICE_NAME}" --force-new-deployment'
+
         }
       }
   }
