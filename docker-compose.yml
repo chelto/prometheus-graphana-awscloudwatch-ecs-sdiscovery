@@ -8,7 +8,7 @@ services:
     container_name: elasticsearch-exporter
     # command:
     # - '--es.uri=localhost:9200'
-    restart: unless-stopped
+
     ports:
     - 0.0.0.0:9114:9114
   

@@ -8,7 +8,7 @@ pipeline {
         REGION = "eu-west-2"
         ECR_REPO = '997475656115.dkr.ecr.eu-west-2.amazonaws.com/podcastcontextual-prometheus-exporter-dev'
         DOCKER_BUILD_TAG = "podcastcontextual-prometheus-exporter-dev"
-        BUILD_PATH = "./prometheus-exporter"
+        BUILD_PATH = "./docker/prometheus-exporter"
       }
   
   stages {
