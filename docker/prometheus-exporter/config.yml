@@ -5,7 +5,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+ 
   # aws_dimension_select_regex:
   aws_metric_name: Invocations
   aws_namespace: AWS/Lambda
@@ -18,7 +18,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+
   aws_metric_name: Errors
   aws_namespace: AWS/Lambda
   aws_statistics:
@@ -29,7 +29,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+
   aws_metric_name: Duration
   aws_namespace: AWS/Lambda
   aws_statistics:
@@ -41,7 +41,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+
   aws_metric_name: Duration
   aws_namespace: AWS/Lambda
   aws_statistics:
@@ -52,7 +52,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+
   aws_metric_name: Duration
   aws_namespace: AWS/Lambda
   aws_statistics:
@@ -63,7 +63,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+
   aws_metric_name: Throttles
   aws_namespace: AWS/Lambda
   aws_statistics:
@@ -74,7 +74,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+
   aws_metric_name: ConcurrentExecutions
   aws_namespace: AWS/Lambda
   aws_statistics:
@@ -85,7 +85,7 @@ metrics:
   - Resource
   aws_dimension_select:
      FunctionName: ["podcast-context-PostToODCLambda-prod"]
-     aws_statistics: [Sum]
+
   aws_metric_name: UnreservedConcurrentExecutions
   aws_namespace: AWS/Lambda
   aws_statistics:

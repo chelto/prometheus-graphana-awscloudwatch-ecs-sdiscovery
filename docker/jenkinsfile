@@ -6,8 +6,8 @@ pipeline {
   }
   environment {
         REGION = "eu-west-2"
-        ECR_REPO = '997475656115.dkr.ecr.eu-west-2.amazonaws.com/podcastcontextual-prometheus-exporter-prod'
-        DOCKER_BUILD_TAG = "podcastcontextual-prometheus-exporter-prod"
+        ECR_REPO = '997475656115.dkr.ecr.eu-west-2.amazonaws.com/podcastcontextual-prometheus-exporter-dev'
+        DOCKER_BUILD_TAG = "podcastcontextual-prometheus-exporter-dev"
         BUILD_PATH = "./docker/prometheus-exporter"
         CLUSTER_NAME = "podcast-context-cluster"
         SERVICE_NAME = "podcast-context-prometheus-exporter-service"
@@ -29,7 +29,7 @@ pipeline {
       }
     stage('Update live service'){
         steps {
-          sh 'aws ecs update-service --region ${REGION} --cluster "prod-${CLUSTER_NAME}" --service "prod-${SERVICE_NAME}" --force-new-deployment'
+          sh 'aws ecs update-service --region ${REGION} --cluster "${BRANCH_NAME}-${CLUSTER_NAME}" --service "${BRANCH_NAME}-${SERVICE_NAME}" --force-new-deployment'
 
         }
       }
