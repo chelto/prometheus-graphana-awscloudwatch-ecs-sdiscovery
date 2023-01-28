@@ -1,17 +1,6 @@
 # WARNING, INSECURE, only to be used for experimenting
 version: '3.6'
 services:
-  
-  elasticsearch_exporter:
-    image: quay.io/prometheuscommunity/elasticsearch-exporter:latest
-    restart: unless-stopped
-    container_name: elasticsearch-exporter
-    # command:
-    # - '--es.uri=localhost:9200'
-
-    ports:
-    - 0.0.0.0:9114:9114
-  
   # write test files to a local volume
   prometheus:
     image: prom/prometheus
@@ -67,5 +56,11 @@ services:
     container_name: lambda-exporter
     ports:
       - "9106:9106"
+    volumes:
+      - ./config.yml:/config/config.yml
+  
+  prometheus-ecs-discovery:
+    image: YOUR-ECS-DISCOVERY-IMAGE
+    container_name: prom-ecs-discovery
     volumes:
       - ./config.yml:/config/config.yml
