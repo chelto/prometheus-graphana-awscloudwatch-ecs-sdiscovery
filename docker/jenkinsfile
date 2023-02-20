@@ -6,11 +6,11 @@ pipeline {
   }
   environment {
         REGION = "eu-west-2"
-        ECR_REPO = '00000000000.dkr.ecr.eu-west-2.amazonaws.com/podcastcontextual-prometheus-exporter-dev'
+        ECR_REPO = '997475656115.dkr.ecr.eu-west-2.amazonaws.com/podcastcontextual-prometheus-exporter-dev'
         DOCKER_BUILD_TAG = "podcastcontextual-prometheus-exporter-dev"
         BUILD_PATH = "./docker/prometheus-exporter"
-        CLUSTER_NAME = "podcast-context-cluster"
-        SERVICE_NAME = "podcast-context-prometheus-exporter-service"
+        CLUSTER_NAME = "dev-podcast-context-cluster"
+        SERVICE_NAME = "dev-podcast-context-prometheus-exporter-service"
         AS = "test"
       }
   

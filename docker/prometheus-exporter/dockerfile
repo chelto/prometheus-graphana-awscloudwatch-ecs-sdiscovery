@@ -2,7 +2,8 @@ FROM prom/cloudwatch-exporter
 ADD config.yml /config/
 
 ENV PRODUCT_NAME = "Dove"
-ENV ENVIRONMENT_NAME = "dev"
+ENV ENVIRONMENT_NAME = "prod"
 ENV PROJECT_NAME ="podcast-context"
+
 
 
